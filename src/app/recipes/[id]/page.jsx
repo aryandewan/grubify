@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import { getRecipeFromMistral } from '@/app/api/recipes/route';
+import { getRecipeFromMistral } from '@/utils/recipe';
 
 // Predefined recipes with ingredients
 const recipes = {
@@ -61,7 +61,7 @@ export default function RecipePage() {
                         {recipe}
                     </ReactMarkdown>
                 )}
-                <Link href="/" className="mt-6 inline-block text-blue-500 hover:underline">
+                <Link href="#" className="mt-6 inline-block text-blue-500 hover:underline">
                     Back to Home
                 </Link>
             </div>

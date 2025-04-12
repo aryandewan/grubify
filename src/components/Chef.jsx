@@ -1,7 +1,7 @@
 "use client"
 
 import React, {useState} from 'react'
-import {getRecipeFromMistral} from "@/app/api/recipes/route";
+import {getRecipeFromMistral} from "@/utils/recipe";
 import {Button} from "@/components/Button";
 import Recipe from "@/components/Recipe";
 import { RxCross1 } from "react-icons/rx";
