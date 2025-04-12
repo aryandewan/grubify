@@ -27,3 +27,4 @@ export async function getRecipeFromMistral(ingredientsArr) {
         throw new Error("Failed to generate recipe: " + err.message);
     }
 }
+

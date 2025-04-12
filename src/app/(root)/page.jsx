@@ -57,7 +57,7 @@ const Home = () => {
             <Rotm recipeOfTheMonth={recipeOfTheMonth}/>
             <Best bestRecipes={bestRecipes} />
             <Review testimonials={testimonials} />
-           <Cta/>
+            <Cta/>
         </main>
     );
 }
