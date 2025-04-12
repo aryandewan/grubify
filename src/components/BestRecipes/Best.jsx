@@ -1,75 +1,35 @@
-"use client"
-
 import React from 'react'
 import RecipeCard from "@/components/RecipeCard";
-import gsap from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
-import { useGSAP} from "@gsap/react";
-
-gsap.registerPlugin(ScrollTrigger);
+import BestWrapper from "@/components/BestRecipes/BestWrapper";
+import Image from "next/image";
 
 const Best = ({bestRecipes}) => {
-    useGSAP(() => {
-        const bestTL = gsap.timeline({
-            scrollTrigger: {
-                trigger: '#best',
-                start: "top center",
-                toggleActions: 'play none none none',
-                once: true,
-            },
-        });
-
-        bestTL.fromTo(".best-title",
-            {
-                opacity: 0,
-                yPercent: 100
-            },
-            {
-                opacity: 1,
-                yPercent: 0,
-                ease: "power1.in"
-            }
-        )
-
-        bestTL.fromTo(".best-desc",
-            {
-                opacity: 0,
-                yPercent: 100
-            },
-            {
-                opacity: 1,
-                yPercent: 0,
-                ease: "power1.in"
-            }
-        )
-
-        bestTL.fromTo(".best-card",
-            {
-                opacity: 0,
-                yPercent: 100
-            },
-            {
-                opacity: 1,
-                yPercent: 0,
-                ease: "power1.in",
-                duration: 1,
-                stagger: 0.2
-            }
-        )
-    }, [])
-
     return (
-        <section id="best" className="w-full min-h-dvh flex flex-col items-center justify-center gap-5">
-            <h2 className="text-5xl lg:text-7xl text-center text-[#a8742f] best-title">OUR BEST RECIPES</h2>
-            <p className="text-lg font-extralight text-center text-[#a8742f] best-desc">
-                Unable to decide? Here are our BEST!
-            </p>
-            <div className="max-w-[90%] xl:max-w-[70%] h-[600px] grid grid-cols-1 lg:grid-cols-3 gap-10">
-                {bestRecipes.map(recipe => (
-                    <RecipeCard key={recipe.id} recipe={recipe} />
-                ))}
-            </div>
-        </section>
+        <BestWrapper>
+            <section id="best" className="relative w-full min-h-dvh flex flex-col items-center justify-center gap-5 py-10 xl:py-0">
+                <div className="absolute inset-0 z-0 bg-[#141414]">
+                    <Image
+                        src="/images/table.jpg"
+                        alt="Background"
+                        fill
+                        className="object-cover object-center opacity-100 mix-blend-overlay"
+                        priority
+                        quality={85}
+                    />
+                </div>
+                <div className="relative z-10 flex flex-col items-center justify-center gap-5">
+                    <h2 className="text-5xl lg:text-7xl text-center text-[#a8742f] best-title">OUR BEST RECIPES</h2>
+                    <p className="text-lg font-extralight text-center text-[#a8742f] best-desc">
+                        Unable to decide? He're our BEST!
+                    </p>
+                    <div className="max-w-[90%] xl:max-w-[70%] h-[600px] grid grid-cols-1 lg:grid-cols-3 gap-10">
+                        {bestRecipes.map(recipe => (
+                            <RecipeCard key={recipe.id} recipe={recipe} />
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </BestWrapper>
     )
 }
 export default Best
